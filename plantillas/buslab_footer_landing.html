@@ -1,0 +1,67 @@
+<style>
+    #footer-landing{
+        background-color: var(--purple);
+    }
+    #footer-landing .logo{
+        width: 160px;
+    }
+    #footer-landing ul{
+        list-style-type: none;
+    }
+    #footer-landing ul li::marker{
+        color: #fff;
+    }
+    #footer-landing ul li a{
+        text-decoration: none;
+        font-size: 16px;
+    }
+    #footer-landing ul li a:hover{
+        color: var(--red);
+    }
+</style>
+
+
+
+<section class="row py-4" id="footer-landing">
+    <div class="col-lg-8 offset-lg-2">
+        <div class="row">
+            <div class="col-lg-3 text-center text-sm-center text-lg-left pb-4 pb-sm-4 pb-md-4 pb-lg-0">
+                <img src="${Fieldset19016427.logo.getData()}" class="img-fluid logo" alt="">
+            </div>
+            <div class="col-lg-3 text-center text-sm-center text-lg-left pb-4 pb-sm-4 pb-md-4 pb-lg-0">
+                <h3 class="subtitles fwhite mb-2 text-uppercase">${Fieldset30751427.titulocol2.getData()}</h3>
+                <ul class="p-0 m-0">
+                    <#if Fieldset30751427.Fieldset01446006.getSiblings()?has_content>
+                        <#list Fieldset30751427.Fieldset01446006.getSiblings() as cur_Fieldset30751427_Fieldset01446006>
+                            <#if (Fieldset30751427.Fieldset01446006.txtlist.getData())??>
+                                <li>
+                                    <a href="${cur_Fieldset30751427_Fieldset01446006.linklista.getData()}" target="_blank" class="fwhite">${cur_Fieldset30751427_Fieldset01446006.txtlist.getData()}</a>
+                                </li>
+                            </#if>
+                        </#list>
+                    </#if>                    
+                </ul>
+            </div>
+            <div class="col-lg-3 text-center text-sm-center text-lg-left pb-4 pb-sm-4 pb-md-4 pb-lg-0">
+                <h3 class="subtitles fwhite mb-2 text-uppercase">${Campo75306964.titcol3.getData()}</h3>
+                <ul class="p-0 m-0">
+                    <#if Campo75306964.Campo84690994.getSiblings()?has_content>
+                        <#list Campo75306964.Campo84690994.getSiblings() as cur_Campo75306964_Campo84690994>
+                            <#if (Campo75306964.Campo84690994.txtlista2.getData())??>
+                                <li>
+                                    <a href="${cur_Campo75306964_Campo84690994.linklista3.getData()}" target="_blank" class="fwhite">${cur_Campo75306964_Campo84690994.txtlista2.getData()}</a>
+                                </li>
+                            </#if>
+                        </#list>
+                    </#if>                    
+                </ul>
+            </div>
+            <div class="col-lg-3 px-5 px-md-4 px-lg-0 text-center text-sm-center text-lg-left">
+                <h3 class="subtitles fwhite mb-2 text-uppercase">${Campo61555247.titcol4.getData()}</h3>
+                <p class="fwhite ptxt2">
+                    ${Campo61555247.descripcion2.getData()}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

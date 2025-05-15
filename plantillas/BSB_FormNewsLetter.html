@@ -1,0 +1,230 @@
+<section class="container banner-newsletter my-5">
+    <article class="row p-4">
+        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6">
+            <div class="d-flex">
+                <picture><img class="pt-1 logo_news" alt="logo" src="${logo.getData()}">
+                </picture>
+            </div>
+            <div class="text-newsletter pt-md-2 my-3 my-md-2">
+                ${descripcion.getData()}
+            </div>
+        </div>
+        
+        <div class="col-12 col-xs-12 col-sm-12 col-md-12 col-lg-6 d-flex align-items-end justify-content-end">
+            <form id="contactof">
+                    <input type="email" id="email" name="email" placeholder="Ingresa tu correo" required class="news">
+                    <button onclick="envio()">
+                        <svg width="13" height="17" viewBox="0 0 13 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M-0.000154961 0.515359L-0.000155072 1.77562L10.1939 8.79706L-0.00015629 15.7172L-0.000156401 16.9831L0.0167217 17L12.0898 8.80269L0.0167232 0.492854L-0.000154961 0.515359Z" fill="#636A6D"></path>
+                        </svg>
+                    </button>
+                    <div class="oculto mt-2">
+                        <label for="lname">Completa la siguiente información: </label>
+                        <input type="text" id="firstname" name="firstname" placeholder="Ingresa tu nombre" class="news AlphabetsOnly">
+                        <br/>
+                        <input type="text" id="lastname" name="lastname" placeholder="Ingresa tu apellido" class="news AlphabetsOnly mt-3">
+                        <br/><br/>
+                        
+                    </div>
+                <div class="terminos-newsletter pt-3 d-flex aling-items-center justify-content-start">
+                    <input type="checkbox" value="terms" id="terms"  class="mr-2"> 
+                    <p>
+                        Estoy de acuerdo con<a href="https://www.ado.com.mx/terminos-y-condiciones" target="_blank">&nbsp;Términos y Condiciones</a>&nbsp;así como el&nbsp;<a href="https://www.ado.com.mx/aviso-de-privacidad" target="_blank">Aviso de Privacidad</a>
+                    </p>
+                </div>
+            </form>
+            <div  id="mensaje">
+                <h4>¡Muchas gracias!</h4>
+                <p class="my-3">A partir de este momento recibiras nuestras noticias</p>
+            </div>
+        </div>
+    </article>
+</section>
+
+
+<style>
+    .oculto{
+        display:none;
+    }
+    #mensaje{
+        display:none;
+    }
+    .logo_news{
+        max-height: 60px;
+    }
+    .banner-newsletter{
+        font-family: 'GothamPro';
+        font-size: 14px;
+        line-height: 16.8px;
+    }
+    .terminos-newsletter p{
+        margin: 0px;
+    }
+    .terminos-newsletter{
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 12px;
+        letter-spacing: 0px;
+        text-align: left;
+    }
+    .terminos-newsletter a{
+        color: #EFD4D7;
+    }
+    [type='checkbox'] {
+        cursor: pointer;
+        height: 14px;
+        width: 14px;
+        margin-top: -2px;
+    }
+    .banner-newsletter{
+        background: #5F2167;
+        color: #fff;
+        border-radius: 15px;
+        & form{
+            & [name='email'],
+            & [name='firstname'],
+            & [name='lastname']{
+                height: 40px;
+                border-radius: 4px 0px 0px 4px;
+                border: 1px #D8DFE3 solid;
+                width: 100%;
+                flex-grow:2;
+                &::placeholder {
+                    font-size: 14px;
+                    font-weight: 400;
+                    line-height: 13px;
+                    letter-spacing: 0.5px;
+                    text-align: left;
+                    padding-left: 0.5em;
+                }
+
+            }
+            & button{
+                background-color: #D8DFE3;
+                width: 40px;
+                height: 40px;
+                border-radius: 0px 4px 4px 0px;
+                border: #D8DFE3 solid 1px;
+                position: absolute;
+                right: -5px;    
+            }
+        }
+        & .text-newsletter{
+            font-family: 'GothamPro';
+            font-size: 14px;
+            line-height: 16.8px;
+
+        }
+        & h3{
+            width: 264.67px;
+            height: 25.33px;
+            top: 24px;
+        }      
+    }
+    @media only screen and (max-width: 600px){
+        .banner-newsletter {width: 95%; padding: 0px !important;}
+        .banner-newsletter{
+            border-radius: 15px;
+            & form{
+                & input{
+                    flex-grow:2;
+                    &::placeholder {
+                        padding-left: 0.5em;
+                    }
+                }
+                & button{
+                    right: 15px;    
+                }
+            }
+            & .text-newsletter{
+                font-family: 'GothamPro';
+                font-size: 14px;
+                line-height: 16.8px;
+
+            }
+            & h3{
+                width: 264.67px;
+                height: 25.33px;
+                top: 24px;
+            }
+        }
+    }
+    @media(max-width: 992px){
+        form{
+            width: 100%;
+        }
+    }
+</style>
+
+<script>
+    $('input').filter('[required]').on('keyup',function() {
+        checkInputs()
+    })
+
+    function checkInputs(){
+        $(".oculto").show();
+    }
+
+    $('.AlphabetsOnly').keypress(function (e) {
+        var regex = new RegExp(/^[a-zA-Z\s]+$/);
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+        else {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    function envio(){
+        if( $("#email").val() != "" && $("#firstname").val() != "" && $("#lastname").val() != ""  && $("#terms").is(':checked')){
+            var settings = {
+                "url": "https://api.hsforms.com/submissions/v3/integration/submit/8212255/b7b705bb-1a40-4da0-a1d3-752b8474a82a",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "submittedAt": new Date().getTime(),
+                    "fields": [
+                        {
+                            "name": "email",
+                            "value": $("#email").val()
+                        },
+                        {
+                            "name": "firstname",
+                            "value": $("#firstname").val()
+                        },
+                        {
+                            "name": "lastname",
+                            "value": $("#lastname").val()
+                        }
+                    ],
+                    "context": {
+                        "pageUri": "buslab.com",
+                        "pageName": "Home Buslab"
+                    },
+                    "legalConsentOptions": {
+                        "consent": {
+                            "consentToProcess": true,
+                            "text": "Acepto los términos y condiciones"
+                        }
+                    }
+                }),
+            };
+
+            $.ajax(settings).done(function (response) {
+                $("#contactof").hide();
+                $("#mensaje").show();
+            });
+        }  
+
+        else{
+            alert("Debes completar correctamente la información");
+            event.preventDefault();
+        }
+        event.preventDefault();
+    }
+</script>

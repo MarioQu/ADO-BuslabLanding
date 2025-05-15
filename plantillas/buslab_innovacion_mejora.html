@@ -1,0 +1,72 @@
+<style>
+    @media(max-width: 767px){
+        #innovamejora .purplebtn{
+            width: 100%;
+        }
+    }
+</style>
+
+
+<section class="container-fluid px-3 p-lg-0 p-md-4">
+    <div class="container-lg">
+        <div class="row py-5 L-tarjeta-texto" id="innovamejora" style="background: ${color_fondo.getData()};" data-aos="fade-up" data-aos-duration="1400">
+            <div class="tarjeta_cont_txt">
+                <#if Titulo_txt.getSiblings()?has_content>
+                    <#list Titulo_txt.getSiblings() as bloq_tit>
+                        <div class="row">
+                            <div class="col-12">${bloq_tit.getData()}</div>
+                        </div>
+                        
+                        <#list bloq_tit.bloq_txt_descripcion.getSiblings() as bloq_txt>
+                            
+                            <#assign bg_color  =  bloq_txt.color_de_fondo.getData()>
+                            <#assign txt_color  =  bloq_txt.color_de_texto.getData()>
+                            
+                            <#if bg_color == "" >
+                            <#if (bloq_tit.TituloBoton.getData())?? && bloq_tit.TituloBoton.getData() != "">
+                                    <div class="row">
+                                        <div class="col-lg-10 col-md-12 col-sm-12 flex-column color_whitebtnro">
+                                            <#if (Titulo_txt.TituloBoton.imagenArribaDelBoton.getData())?? && Titulo_txt.TituloBoton.imagenArribaDelBoton.getData() != "">
+                                                <img class="img_mobile_ert" width="120px" alt="${Titulo_txt.TituloBoton.imagenArribaDelBoton.getAttribute("alt")}" data-fileentryid="${Titulo_txt.TituloBoton.imagenArribaDelBoton.getAttribute("fileEntryId")}" src="${Titulo_txt.TituloBoton.imagenArribaDelBoton.getData()}" />
+                                            </#if>
+
+                                            <div class="tarjeta_txt text-center text-lg-left" style="color: ${txt_color} ;">${bloq_txt.txt_descripcion.getData()}</div>
+                                        </div>
+                                    
+                                        <div class="col-lg-2 col-md-12 col-ms-12 d-flex align-items-center justify-content-end justify-content-md-center">
+                                            <#if (Titulo_txt.TituloBoton.imagenArribaDelBoton.getData())?? && Titulo_txt.TituloBoton.imagenArribaDelBoton.getData() != "">
+                                                <img class="img_desk_ert" width="120px" alt="${Titulo_txt.TituloBoton.imagenArribaDelBoton.getAttribute("alt")}" data-fileentryid="${Titulo_txt.TituloBoton.imagenArribaDelBoton.getAttribute("fileEntryId")}" src="${Titulo_txt.TituloBoton.imagenArribaDelBoton.getData()}" />
+                                            </#if>
+                                            
+                                            <a class="btn purplebtn" href="${bloq_tit.TituloBoton.urlBoton.getData()}">
+                                                ${bloq_tit.TituloBoton.getData()}
+                                            </a>
+                                        </div>
+                                    </div>
+                                <#else>
+
+                                <div class="row">
+                                    <#if (bloq_txt.txt_descripcion.getData())?? && bloq_txt.txt_descripcion.getData() != "">
+                                        <div class="col-12 tarjeta_txt" style="color: ${txt_color};">${bloq_txt.txt_descripcion.getData()}</div>
+                                    </#if>
+                                </div>
+
+                                </#if>
+                                
+                            <#else>
+                                <#if (bloq_txt.txt_descripcion.getData())?? && bloq_txt.txt_descripcion.getData() != "">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="tarjeta_txt_color" style="border-radius: 4px; box-sizing: border-box; background: ${bg_color} ; color: ${txt_color} ; ">${bloq_txt.txt_descripcion.getData()}</div>
+                                        </div>
+                                    </div>
+                                </#if>
+                            </#if>                    
+                        </#list>
+                    </#list>
+                </#if>
+            </div>
+            <hr> 
+        </div>
+    </div>
+</section>

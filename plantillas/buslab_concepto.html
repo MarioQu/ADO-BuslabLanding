@@ -1,0 +1,27 @@
+<style>
+    @media(max-width: 767px){
+        #bslbconcepto .titles1{
+            font-size: 24px;
+            line-height: 28.8px;
+        }
+    }
+</style>
+
+<section class="container-fluid faback">
+    <div class="container-lg py-5" id="bslbconcepto">
+        <div class="row">
+            <div class="col-lg-5">
+                <img src="${imagen.getData()}" class="img-fluid w-100" alt="" data-aos="fade-right" data-aos-duration="1700">
+            </div>
+            
+            <div class="col-lg-7 d-flex flex-column align-items-start justify-content-center px-4 px-md-4 px-lg-0">
+                <h2 class="titles1 fblack text-left" data-aos="fade-right" data-aos-duration="1300">
+                    ${titulo.getData()}
+                </h2>
+                <p class="ptxt2 fblack text-left mt-4" data-aos="fade-right" data-aos-duration="1650">
+                    ${descripcion.getData()}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

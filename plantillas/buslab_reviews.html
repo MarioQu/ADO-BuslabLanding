@@ -1,0 +1,148 @@
+<#assign article_id                = randomNamespace >
+
+<section class="container my-4 container__articleDesc_${article_id}">
+    <div class="row">
+        <div class="col-12 col-md-3 text-center text-md-left articleDesc__image">
+            <#if (Articulo.Imagen.getData())?? && Articulo.Imagen.getData() != "">
+            	<img alt="${Articulo.Imagen.getAttribute("alt")}" data-fileentryid="${Articulo.Imagen.getAttribute("fileEntryId")}" src="${Articulo.Imagen.getData()}" />
+            </#if>
+        </div>
+        <div class="col-12 col-md-9 pt-4 pt-md-0 d-flex flex-column justify-content-center articleDesc__content">
+            <#if (Articulo.Icono.getData())?? && Articulo.Icono.getData() != "">
+            	<img 
+            	    class="mb-4 d-none d-md-block art_desc_img_per-img"
+            	    alt="${Articulo.Icono.getAttribute("alt")}" 
+            	    data-fileentryid="${Articulo.Icono.getAttribute("fileEntryId")}"
+            	    src="${Articulo.Icono.getData()}" />
+            </#if>
+            <h3 class="articleDesc__titulo">${Articulo.Titulo.getData()}</h3>
+            <hr>
+            
+            <#if Articulo.Texto?? && Articulo.Texto.getSiblings()?has_content>
+            <div class="articleDesc__texto">
+            	<#list Articulo.Texto.getSiblings() as cur_Articulo_Texto>
+                    ${cur_Articulo_Texto.getData()}
+            	</#list>
+            </div>
+            </#if>
+            
+            <#if Articulo.TextoHTML?? && Articulo.TextoHTML.getSiblings()?has_content>
+            <div class="articleDesc__texto">
+            	<#list Articulo.TextoHTML.getSiblings() as cur_Articulo_TextoHTML>
+                	${cur_Articulo_TextoHTML.getData()}
+            	</#list>
+            </div>
+            </#if>
+            <#if (Articulo.Boton.TextoBoton.getData())?? && Articulo.Boton.TextoBoton.getData() != "">
+                <div class="row">
+                    <section class="mb-4 mb-md-0 col-12 col-md-6">
+            	        <a  class="mt-auto articleDesc__link--custom"
+            	            href="${Articulo.Boton.Link.getData()}"
+            	            target="_blank"
+            	            rel="noopener noreferrer">
+            	            ${Articulo.Boton.TextoBoton.getData()}
+            	        </a>
+        	        </section>
+    	        </div>
+            </#if>
+        </div>
+        <#if Articulo.Descripcion.Parrafo.getSiblings()?has_content 
+        ||  Articulo.Descripcion.ParrafoHTML.getSiblings()?has_content>
+            <div class="col-12  pt-0 pt-md-4">
+                <#if Articulo.Descripcion.Parrafo??>
+                	<#list Articulo.Descripcion.Parrafo.getSiblings() as cur_Articulo_Descripcion_Parrafo>
+                		<p class="articleDesc__descripcion">${cur_Articulo_Descripcion_Parrafo.getData()}</p>
+                	</#list>
+                </#if>
+                <#if Articulo.Descripcion.ParrafoHTML??>
+                	<#list Articulo.Descripcion.ParrafoHTML.getSiblings() as cur_Articulo_Descripcion_ParrafoHTML>
+                		<div class="articleDesc__descripcionHTML">
+                		    ${cur_Articulo_Descripcion_ParrafoHTML.getData()}
+                		</div>
+                	</#list>
+                </#if>
+            </div>
+        </#if>
+    </div>
+</section>
+
+<style>
+
+    .container__articleDesc_${article_id} .text-pay p, li{
+        font-size: 14px !important;
+        /* font-weight: normal; */
+    }
+
+    .container__articleDesc_${article_id} li strong {
+        font-weight: bold;
+    }
+
+    .articleDesc__image img{
+        border-radius: 10px;
+    }
+    
+    .container__articleDesc_${article_id} .articleDesc__titulo{
+        font-size: 24px;
+        line-height: 24px;
+        letter-spacing: 0px;
+        text-align: left;
+    }
+    
+    .container__articleDesc_${article_id} .articleDesc__texto{
+        font-family: 'GothamPro';
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 16.8px;
+        text-align: left;
+
+    }
+    
+    .container__articleDesc_${article_id} .articleDesc__link--custom{
+        font-size: 12px;
+        /* font-weight: 400; */
+        line-height: 14px;
+        text-align: center;
+        border: 1px solid #E11F2A;
+        padding: 9px;
+        border-radius: 4px;
+        color: #E11F2A;
+        text-decoration: none;
+        
+    }
+    
+    .articleDesc__link--custom:hover{
+        background-color:#E11F2A;
+        color:#fff;
+    }
+    
+    .container__articleDesc_${article_id} .articleDesc__descripcion{
+        font-size: 14px;
+        /* font-weight: 400; */
+        line-height: 18px;
+        letter-spacing: 0px;
+        text-align: left;
+    }
+    
+    .articleDesc__descripcion strong{
+        font-size: 18px;
+    }
+            
+    .container__articleDesc_${article_id} .articleDesc__descripcionHTML{
+        font-size: 14px;
+        /* font-weight: 400; */
+        line-height: 18px;
+    }
+        
+    .container__articleDesc{
+        font-family: 'GothamPro';
+        color: #222222;
+    }
+    .articleDesc__content .art_desc_img_per-img{
+        width: 50px;
+    }
+    
+    hr {
+        border-top: 1px solid #C9DDE6;
+        width: 100%;
+    }
+</style>

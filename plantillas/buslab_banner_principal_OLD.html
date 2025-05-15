@@ -1,0 +1,241 @@
+<link rel="stylesheet" href="/documents/d/buslab/aos-1-1">
+<script src="/documents/d/buslab/aos-2"></script>
+
+<style>
+    /* Estilos generales */
+    :root{
+        --purple:   #5F2167;
+        --red:      #E11F2A; 
+        --white:    #ffffff;
+        --fafa:     #FAFAFA;
+        --black:    #000000;
+        --dark1:    #212529;
+        --dark2:    #31343C;
+        --dark3:    #222222;
+        --dark4:    #1D1F24;
+    }
+    body{
+        background-color: var(--fafa);
+    }
+    .container-fluid{ 
+        padding-left: 0; 
+        padding-right: 0; 
+    }
+    .row{ 
+        margin-left: 0; 
+        margin-right: 0; 
+    }
+    button{
+        box-shadow: none !important;
+    }
+    .myborder{
+        border: 1px dashed #00ffff !important;
+    }
+    .backpurple{
+        background-color: var(--purple);
+    }
+    .faback{
+        background-color: var(--fafa);
+    }
+    .fpurple{
+        color: var(--purple);
+    }
+    .fred{
+        color: var(--red);   
+    }
+    .fwhite{
+        color: var(--white);   
+    }
+    .fblack{
+        color: var(--black);   
+    }
+    .fdark1{
+        color: var(--dark1);
+    }
+    .fdark2{
+        color: var(--dark2);
+    }
+    .fdark3{
+        color: var(--dark3);
+    }
+    .fdark3{
+        color: var(--dark3);
+    }
+    .titles1{
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 48px
+    }
+    .titles2{
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 28.8px;
+    }
+    .titles3{
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 38.4px;
+    }
+    .titles4{
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 21.6px;
+    }
+    .subtitles{
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19.2px;
+    }
+    .ptxt{
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 21.6px;
+    }
+    .ptxt2{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16.8px;
+    }
+    .ptxt3{
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14.4px;
+    }
+    .ptxt4{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19.2px;
+    }
+    .redbtn{
+        border: 1px solid var(--red);
+        background-color: var(--red);
+        color: var(--white);   
+        font-size: 12px; 
+    }.redbtn:hover{
+        background-color: var(--white);
+        color: var(--red);   
+    }
+    .whitebtn{
+        background-color: var(--white);
+        color: var(--purple);   
+        font-size: 12px; 
+    }
+    .purplebtn{
+        border: 1px solid var(--purple);
+        background-color: var(--purple);
+        color: #fff;   
+        font-size: 12px; 
+    }.purplebtn:hover{
+        background-color: var(--white);
+        color: var(--purple);   
+    }
+
+    /* Estilos Banner Principal */
+    #MainBannerHome{
+        height: 600px;
+        position: relative;
+        overflow: hidden;
+    }
+    #MainBannerHome .container-lg{
+        height: 100%;
+    }
+    #MainBannerHome .yt-video{
+        width: 2048px;
+        height: 1152px;
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    #MainBannerHome .opa-div{
+        background: rgba(95, 33, 103, .9); 
+        position: absolute; 
+        left: 0; 
+        top: 0; 
+        right: 0; 
+        bottom: 0; 
+        width: 100%; 
+        height: 100%; 
+        z-index: 2;
+    }
+    .social-list1{
+        list-style-type: none;
+    }
+    .social-list1 a{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        background-color: var(--red);
+    }.social-list1 a:hover{
+        background-color: var(--purple);
+    }
+</style>
+
+
+<section class="container-fluid" id="MainBannerHome">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <iframe src="https://www.youtube.com/embed/AcdtyexMyWM?autoplay=1&loop=1&mute=1&rel=0&controls=0&showinfo=0&playlist=AcdtyexMyWM" frameborder="0" class="yt-video"></iframe>
+     
+    <div class="opa-div"> </div>
+    
+    <div class="container-lg d-flex align-items-center justify-content-center">
+        <div class="row" >
+            <div class="col-lg-12 text-center py-5" style="position: relative; z-index: 3;">
+                <h1 class="titles1 fwhite mb-3" data-aos="fade-dowm" data-aos="fade-up" data-aos-duration="1300">
+                    ${titulo.getData()}
+                </h1>
+                <p class="fwhite ptxt1" data-aos="fade-down" data-aos-duration="1600">
+                    <#if (txtareadescripcion.getData())??>
+                        ${txtareadescripcion.getData()}
+                    </#if>
+                </p>
+                
+                <!--
+                <ul class="d-flex align-items-center justify-content-center social-list1 ml-0 pl-0 mt-5">
+                    <#assign counter = 1300>
+                    
+                    <#if Fieldset24747733.getSiblings()?has_content>
+                        <#list Fieldset24747733.getSiblings() as cur_Fieldset24747733>
+                            <#if (Fieldset24747733.Select67396634.getData())??>
+                                <li data-aos="fade-right" data-aos-duration="${counter}">
+                                    <a href="${cur_Fieldset24747733.link_social.getData()}" target="_${cur_Fieldset24747733.Radio64495825.getData()}" class="mr-3">
+                                        ${cur_Fieldset24747733.Select67396634.getData()}
+                                        <#if cur_Fieldset24747733.Select67396634.getData() == "facebook">
+                                            <img src="/documents/4523468/4624520/facebook.svg" alt="Facebook" width="40px">
+                                        <#elseif cur_Fieldset24747733.Select67396634.getData() == "instagram">
+                                            <img src="/documents/4523468/4624520/Insta.svg" alt="Instagram" width="40px">
+                                        <#elseif cur_Fieldset24747733.Select67396634.getData() == "twitterx">
+                                            <img src="/documents/4523468/4624520/X.svg" alt="X" width="40px">
+                                        <#elseif cur_Fieldset24747733.Select67396634.getData() == "youtube">
+                                            <img src="/documents/4523468/4624520/Youtube.svg" alt="YouTube" width="40px">
+                                        <#else>                                            
+                                        </#if>
+                                    </a>
+                                </li>
+                                <#assign counter = counter + 300>
+                            </#if>
+                        </#list>
+                    </#if>
+                </ul>
+                -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    AOS.init();
+</script>
+

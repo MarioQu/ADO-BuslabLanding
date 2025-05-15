@@ -1,0 +1,209 @@
+<#assign Hola_logo          = "/documents/4523468/4634630/Hola-logo.svg" >
+<#assign facebook           = "/documents/4523468/4624520/facebook.svg" >
+<#assign Insta              = "/documents/4523468/4624520/Insta.svg" >
+<#assign logo_x             = "/documents/4523468/4624520/X.svg" >
+<#assign Youtube            = "/documents/4523468/4624520/Youtube.svg" >
+
+<div class="inicio">
+    <p class="mt-2"><a href="#top">Inicio de Página</a></p>
+</div>
+
+
+<div class="footer">
+    <div class="container row">           
+        <#if ArbolDePaginas.getSiblings()?has_content>
+            <#list ArbolDePaginas.getSiblings() as cur_Arbol>
+            <div class="col-6 col-sm-6 col-md-6 col-lg-3 column_foot text-left">
+                <p style="font-weight: bold;">${cur_Arbol.TituloDeColumna.getData()}</p>
+                <#if cur_Arbol.TextoLink.getSiblings()?has_content>
+                    <#list cur_Arbol.TextoLink.getSiblings() as cur_TextoLink>
+                        <a class="link_clumna mb-3" href="${cur_TextoLink.URLLink.getData()}" target="_self">${cur_TextoLink.getData()}</a>
+                    </#list>
+                </#if>
+                
+            </div>
+            </#list>
+        </#if>
+        
+        
+        <!--contenido fijo -->
+        <div class="col-6 col-sm-6 col-md-6 col-lg-3 mt-md-0 mt-5 text-left">
+            <p style="font-weight: bold;">Atención a clientes</p>
+            <p>
+                <a href="https://hola.ado.com.mx/hc/es" target="_blank">
+                    <img width="90px" src="${Hola_logo}" class="img-HOLA">
+                </a>
+            </p>
+        </div>
+        
+        <!--contenido fijo -->
+        <div class="col-6 col-sm-6 col-md-6 col-lg-3 mt-md-0 mt-5 text-left">
+            <p style="font-weight: bold;">Síguenos</p>
+            <p>
+                <a href="https://www.facebook.com/TuADO/" target="_blank"><img src="${facebook}" class="img-social-footer"></a>
+                <a href="https://www.instagram.com/tuadomx/" target="_blank"><img src="${Insta}" class="img-social-footer"></a>
+                <a href="https://twitter.com/tuado/" target="_blank"><img src="${logo_x}" class="img-social-footer"></a>
+                <!-- <a href="https://www.youtube.com/user/autobusesADO" target="_blank"><img src="${Youtube}" class="img-social-footer"></a> -->
+            </p>
+        </div>
+    </div>
+    
+      
+    <hr style="border-top: 1px solid #ccc; width: 100%;">
+    <div class="container subm py-4" style="text-align: center;">
+        <p><img style="max-width: 150px;" src="/documents/4523468/4634630/LogoBuslabB.png"></p>
+        
+        <div class="row mt-3">
+            <div class="col-12">
+                <ul class="list-legales-footer d-flex align-items-center justify-content-center">
+                    <#if BaseLegales.TextoOLinkLegales.getSiblings()?has_content>
+                        <#list BaseLegales.TextoOLinkLegales.getSiblings() as cur_BaseLegales_TextoOLinkLegales>
+                            <li>${cur_BaseLegales_TextoOLinkLegales.getData()}</li>
+                        </#list>
+                    </#if>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><!-- .footer -->
+    
+    
+<div class="b-final">
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 text-center text-sm-center text-md-center text-lg-left">
+                <#if (copyright.getData())??>
+                    ${copyright.getData()}
+                </#if>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 text-center text-sm-center text-md-center text-lg-right text-uppercase">
+                <#if (footer_enterprise.getData())??>
+                    ${footer_enterprise.getData()}
+                </#if>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    .footer .link_clumna:hover,
+    .list-legales-footer li a:hover{
+        color: #E11F2A;
+    }
+    .portlet {
+        margin-bottom: 0px;
+    }
+    .footer a, .footer a:link, .footer a:visited {
+        color: #FFFF;
+        text-decoration: none;
+    }
+    .inicio{
+        background-color: #263238;
+        text-align: center;
+        font-family: 'GothamPro';
+        padding: 3px 0px;
+    }
+    .inicio a{
+        color: #fff;
+        font-weight: bold;
+        font-size: 13px;
+        text-decoration: none;
+    }
+    .column_foot p, .column_foot a{
+        display: block;
+    }
+    .footer{
+        background-color: #373A43;
+        color:#fff;
+        padding-top: 40px;
+        font-family: 'GothamPro';
+    }
+    .footer .container{
+        width: 80%; margin: 0 auto;
+    }
+    .footer .link_clumna{
+        font-size: 12px;
+        font-weight: 400;
+    }
+    /*
+    .footer .col-f{
+        width: 18%;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 12px;
+        margin-left: 70px;
+        
+    }
+    */
+
+    .footer .col p{
+        line-height: 26px;
+    }
+    .footer .img-avanza{
+        margin-right: 5px; padding-right: 10px;
+    }
+
+    .footer .subm a{
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+    }
+    .b-final .footer-fin{
+        display: inline-block; width: 33%; vertical-align: top; text-align: center;
+        padding-top:10px;
+    }
+
+    .b-final{
+        background-color: #64186D;
+        color: #fff;
+        font-size: 12px;
+        padding: 5px 0px;
+        font-family: 'GothamPro';
+    }
+
+    .b-final a{
+        color: #fff;
+        text-decoration: none;
+        font-family: 'GothamPro';
+    }
+    .site-wrapper.signed-in main {
+        padding: 0px;
+    }
+    .img-social-footer{
+        width: 43px;
+    }
+    .list-legales-footer{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    .list-legales-footer li:first-child::after{
+        content: "|";
+        margin-left: 10px;
+        margin-right: 10px;
+        color: #fff;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .footer .container{
+            width: 100%;
+        }
+        .footer .col-f{
+            width: 45%;
+            margin-left: 9px;
+        }
+        .footer .img-avanza{
+            margin-right: 13px;
+            padding-right: 0px;
+            width: 70px;
+        }
+        .footer .img-hola{
+            width: 50px;
+        }
+        .b-final .footer-fin{
+            display: inline-block; width: 100%; vertical-align: top; text-align: center;
+        } 
+    }
+</style>

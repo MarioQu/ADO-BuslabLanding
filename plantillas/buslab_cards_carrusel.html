@@ -1,0 +1,283 @@
+<#assign slick_css                	= "/documents/4523468/4624446/slick.css" >
+<#assign slick_theme                = "/documents/4523468/4624446/slick-theme.css" >
+<#assign slick_js                	= "/documents/4523468/4624446/slick.min.js" >
+<#assign left_slide                	= "/documents/4523468/4634630/left-slide.png" >
+<#assign next_slide                	= "/documents/4523468/4634630/next-slide.png" >
+
+
+<link rel="stylesheet" type="text/css" href="${slick_css}"/>
+<link rel="stylesheet" type="text/css" href="${slick_theme}"/>
+<script type="text/javascript" src="${slick_js}"></script>
+
+
+<#assign article_id                = randomNamespace >
+
+
+<section class="container-fluid">
+    <div class="container-lg">
+        <div class="row bannerInfo">
+            <div class="col-lg-12 informativo mt-4">
+                <div class="row justify-content-center">
+                    <div class="col-12 box">
+                        <#assign count = 1>
+                        <#if Fieldset29975684.getSiblings()?has_content>
+                            <#list Fieldset29975684.getSiblings() as cur_Fieldset29975684>
+                                <div class="pt-3">
+                                    <div class="over_img">
+                                        <img loading="lazy" alt="" data-fileentryid="" src="${cur_Fieldset29975684.imagen.getData()}" class="w-100"/>
+                                    </div>
+                                    <div class="bann-texto">
+                                        <div class="row">
+                                            <div class="col-lg-9 text-center text-md-left">
+                                                <h3 class="m-0 p-0">${cur_Fieldset29975684.titulo.getData()}</h3>
+                                                <p class="descripcion">${cur_Fieldset29975684.descripcion.getData()}</p>
+                                                <p class="mt-lg-4"><a href="${cur_Fieldset29975684.linkbtn.getData()}" class="btn_morado">${cur_Fieldset29975684.txtbtn.getData()}</a></p>
+                                            </div>
+                                            <div class="col-lg-3 d-flex d-flex align-items-center justify-content-center">
+                                                <div class="timer" style="--duration: 5;--size: 30;" id="timer${count}">
+                                                    <div class="mask" id="mask${count}"></div>
+                                                </div>
+                                                <div class="mr-lg-5 controls" >
+                                                    <i class="icon-pause" ></i>
+                                                    <i class="icon-play" onclick="reset_animation(${count})" style="display:none"></i>
+                                                </div>
+                                            
+                                                <div class="arrows d-flex align-items-center justify-content-center mt-4 mt-md-0" aria-hidden="true">
+                                                    <img class="icon-angle-left prev-btn" src="/documents/4523468/4634630/pagination-left.svg/2294fbd0-3887-c30c-ba93-1c0d88c52d99?t=1727974735457">
+                                                    <div class="separador"></div>
+                                                    <img class="icon-angle-right next-btn" src="/documents/4523468/4634630/pagination-right.svg/db0e1090-3335-2129-440b-0a825eda3b43?t=1727974735586">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>    
+                                <#assign count = count + 1>  
+                            </#list>
+                        </#if>         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+	$('.box').slick({
+		lazyLoad: 'ondemand',
+		infinite: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		autoplay: true,
+		autoplaySpeed: 5000,
+		pauseOnHover:false,
+		nextArrow: '.next-btn',
+		prevArrow: '.prev-btn',
+		fade: true,
+		cssEase: 'linear',
+	});
+	$('.bannerInfo .icon-pause').on('click', function() {
+		$('.bannerInfo  .box').slick('slickPause');
+		$(".timer,.mask").css("-webkit-animation-play-state", "paused");
+		$(".icon-pause").css("display","none");
+		$(".icon-play").css("display","block");
+	});
+
+	$('.bannerInfo .icon-play').click( function() {
+		$(".bannerInfo .box").slick("slickPlay");
+		$(".timer,.mask").css("-webkit-animation-play-state", "running");
+		$(".icon-play").css("display","none");
+		$(".icon-pause").css("display","block");
+	});
+
+	$(".bannerInfo .box").on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {  
+	var i = (currentSlide ? currentSlide : 0) + 1;
+		reset_animation(i);
+	});
+
+
+	function reset_animation(contador) {
+	var el = document.getElementById('mask'+contador);
+	el.style.animation = 'none';
+	el.offsetHeight;
+	el.style.animation = null;
+	var el2 = document.getElementById('timer'+contador);
+	el2.style.animation = 'none';
+	el2.offsetHeight;
+	el2.style.animation = null;
+	}
+</script>
+
+<style>
+	.bannerInfo .over_img{
+		max-width: 100%;
+		height: 255px;
+		overflow: hidden;
+		border-radius: 15px;
+		z-index: 1;
+	}
+	.bannerInfo img.banner{
+		max-width: 100%;
+		height: auto;
+		z-index: 1;
+	}
+	.bannerInfo .bann-texto{
+		background-color: #fff;
+		border-radius: 10px;
+		border:1px solid #B5BAC7;
+		width: 95%;
+		padding: 20px 20px;
+		margin: -30px auto 0;
+		z-index: 2;
+		position: relative;
+		h3{
+			font-size: 18px;
+			font-family:'Gothampro-Bold';
+			margin-bottom:10px;
+		}
+		p.descripcion{
+			font-size: 14px;
+		}
+		div.separador{
+			height: 60px;
+			width: 1px;
+			background-color: #ccc;
+			margin: 0px 40px;
+		}
+	}
+	.bannerInfo a.btn_morado{
+		border: 1px solid #5F2167;
+		background-color: #5F2167;
+		max-width: 270px;
+		width: 270px;
+		overflow: hidden;
+		color: #fff;
+		outline: none;
+		display: inline-block;
+		padding: 15px 30px;
+		text-align: center;
+		border-radius: 5px;
+		text-decoration: none;
+	}
+	.bannerInfo a.btn_morado:hover{
+		background-color: #fff;
+		border: 1px solid #5F2167;
+		color: #5F2167;
+	}
+	.bannerInfo .arrows{
+		width:100%;
+	}
+	.bannerInfo .controls{
+		position: absolute;
+		top: 1px;
+		margin-left: -9px;
+	}
+	.bannerInfo .controls i{
+		font-size: 12px;
+		z-index: 2;
+		position: absolute;
+		margin-top:-6px;
+	}
+	.bannerInfo .controls i:hover{
+		cursor:pointer;
+	}
+
+	.bannerInfo .timer {
+		position:absolute;
+		top: -14px;
+		left: auto;
+		background: -webkit-linear-gradient(left, #5F2167 50%, #E4DAE6 50%);
+		border-radius: 100%;
+		height: calc(var(--size) * 1px);
+		width: calc(var(--size) * 1px);
+		-webkit-animation: time calc(var(--duration) * 1s) steps(1000, start) infinite;
+		-webkit-mask: radial-gradient(transparent 50%,#000 50%);
+		mask: radial-gradient(transparent 50%,#000 50%);
+	}
+	.bannerInfo .mask {
+		border-radius: 100% 0 0 100% / 50% 0 0 50%;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 50%;
+		-webkit-animation: mask calc(var(--duration) * 1s) steps(500, start) infinite;
+		-webkit-transform-origin: 100% 50%;
+	}
+	@-webkit-keyframes time {
+		100% {
+			-webkit-transform: rotate(360deg);
+		}
+	}
+	@-webkit-keyframes mask {
+		0% {
+			background: #E4DAE6;
+			-webkit-transform: rotate(0deg);
+		}
+		50% {
+			background: #E4DAE6;
+			-webkit-transform: rotate(-180deg);
+		}
+		50.01% {
+			background: #5F2167;
+			-webkit-transform: rotate(0deg);
+		}
+		100% {
+			background: #5F2167;
+			-webkit-transform: rotate(-180deg);
+		}
+	}
+
+	@media (min-width: 576px) {}
+	@media (max-width: 768px) {
+		.bannerInfo a.btn_morado{
+			width: 100%;
+		}
+	}
+
+	@media (min-width: 992px) {
+		.bannerInfo{
+			height: auto;
+			margin-bottom:50px;
+		}
+		.bannerInfo .over_img{
+			max-width: 100%;
+			height: 495px;
+			overflow: hidden;
+			border-radius: 25px;
+			z-index: 1;
+		}
+		.bannerInfo .bann-texto{
+			padding: 20px 20px 0px;
+		}
+		.bannerInfo a.btn_morado{
+			max-width: 215px;
+			width: 215px;
+		}
+		.bannerInfo .controls{
+			position: absolute;
+			top: auto;
+			left: 24px;
+		}
+		.bannerInfo .arrows {
+			margin-left: 0%;
+		}
+		.bannerInfo .slick-track {
+			padding:0px 0px 40px;
+		}
+		.bannerInfo .timer {
+			position:absolute;
+			left: 4.5px;
+			top: 57px;
+			background: -webkit-linear-gradient(left, #5F2167 50%, #E4DAE6 50%);
+			border-radius: 100%;
+			height: calc(var(--size) * 1px);
+			width: calc(var(--size) * 1px);
+			-webkit-animation: time calc(var(--duration) * 1s) steps(1000, start) infinite;
+			-webkit-mask: radial-gradient(transparent 50%,#000 50%);
+			mask: radial-gradient(transparent 50%,#000 50%);
+		}
+	}
+	@media (min-width: 1200px) { }
+</style>

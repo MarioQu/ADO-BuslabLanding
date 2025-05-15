@@ -1,0 +1,46 @@
+<style>
+    .cards-innova{
+        border: 1px solid #B5BAC7;
+        border-radius: 8px;
+        height: 130px;
+    }
+    .cards-innova .cardhead{
+        width: 20%;
+    }
+    .cards-innova .cardtxt{
+        width: 80%;
+    }
+    @media(max-width: 992px){
+        .cards-innova{
+            height: auto;
+        }
+    }
+</style>
+
+<section class="container-fluid">
+    <div class="container-lg mb-5">
+        <div class="row">
+            <#assign counter = 1000>
+            <#if Fieldset89419893.getSiblings()?has_content>
+                <#list Fieldset89419893.getSiblings() as cur_Fieldset89419893>
+                    <#if (Fieldset89419893.titulo.getData())??>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 px-3 pb-4 pb-md-4 pb-lg-0" data-aos="zoom-in" data-aos-duration="${counter}">
+                            <div class="cards-innova d-flex align-items-start justify-content-center p-3">
+                                <div class="cardhead text-center">
+                                    <img src="${cur_Fieldset89419893.icono.getData()}" class="img-fluid" alt="">
+                                </div>
+                                <div class="cardtxt px-2">
+                                    <h3 class="titles4 fblack">${cur_Fieldset89419893.titulo.getData()}</h3>
+                                    <p class="ptxt2">
+                                        ${cur_Fieldset89419893.descripcion.getData()}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </#if>
+                    <#assign counter = counter + 350>      
+                </#list>
+            </#if>
+        </div>
+    </div>
+</section>  

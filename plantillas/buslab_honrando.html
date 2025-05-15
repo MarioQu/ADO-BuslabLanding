@@ -1,0 +1,38 @@
+<style>
+    .honrando .honrandoicons{
+        width: 60px;
+        border-radius: 20px;
+        background-color: #fff;
+    }
+    .honrando{
+        background-color: #E3E7F2;
+    }
+</style>
+
+
+<section class="container-fluid honrando">
+    <div class="container-lg px-lg-0 px-md-5 px-5 py-5">
+        <div class="row">
+            <h1 class="titles4 fdark mb-3 text-left" data-aos="fade-down" data-aos-duration="1600">
+                ${titulo.getData()}
+                <hr>
+            </h1>
+            <p class="fdark ptxt1 text-left" data-aos="fade-up" data-aos-duration="1900">
+                ${descripcion.getData()}
+            </p> 
+            
+            <#assign counter = 1000>                                   
+            <#if Fieldset99636803.getSiblings()?has_content>
+                <#list Fieldset99636803.getSiblings() as cur_Fieldset99636803>
+                    <#if (Fieldset99636803.iconodesc.getData())??>
+                        <div class="col-lg-4 col-md-12 col-sm-6 col-12 text-left d-flex align-items-center justify-content-start pb-4 pb-lg-4" data-aos="fade-right" data-aos-duration="${counter}">
+                            <img src="${cur_Fieldset99636803.icono.getData()}" alt="" class="mr-2 honrandoicons">                        
+                            <h3 class="fdark subtitles ml-2">${cur_Fieldset99636803.iconodesc.getData()}</h3>
+                        </div> 
+                    </#if>
+                </#list>
+                <#assign counter = counter +350>
+            </#if>
+        </div>
+    </div>
+</section>

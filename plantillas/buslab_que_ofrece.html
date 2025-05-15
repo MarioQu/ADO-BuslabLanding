@@ -1,0 +1,51 @@
+<style>
+    #queofrece .purpleback{
+        background: var(--purple);
+        border-radius: 20px;
+    }
+    #queofrece ul{
+        list-style-type: none; 
+    }
+    #queofrece ul li{
+        background-image: url("/documents/d/buslab/check-circle-white");
+        background-position: top 1px left;
+        background-repeat: no-repeat;
+        background-size: 20px;
+        padding-left: 30px;
+    }
+    #queofrece ul li img{
+        width: 20px;
+    }
+</style>
+
+
+<section class="container-fluid">
+    <div class="container-lg mt-5 px-4 px-md-0" id="queofrece">
+        <div class="row">
+            <div class="col-lg-7 purpleback p-4 p-md-5 p-lg-5">
+                <h2 class="titles1 fwhite mb-4 mt-4" data-aos="fade-up" data-aos-duration="1300">${titulo.getData()}</h2>
+                <p class="ptxt fwhite" data-aos="fade-down" data-aos-duration="1600">
+                    ${descripcion.getData()}
+                </p>
+                
+                <ul class="pl-0 mb-4">
+                    <#assign counter = 1000>
+                    <#if caracteristicas.getSiblings()?has_content>
+                        <#list caracteristicas.getSiblings() as cur_caracteristicas>
+                            <#if (cur_caracteristicas.getData())??>
+                                <li class="fwhite mb-3" data-aos="zoom-in" data-aos-duration="${counter}">                                    
+                                    ${cur_caracteristicas.getData()}
+                                </li>
+                            </#if>
+                            <#assign counter = counter + 350>
+                        </#list>                                        
+                    </#if>
+                </ul>
+            </div><!-- col-lg-7 -->
+            
+            <div class="col-lg-5 d-flex align-items-center justify-content-center pt-3 pt-md-0 pt-lg-0">
+                <img src="${imagen.getData()}" class="img-fluid mx-auto d-block" alt="" data-aos="fade-right" data-aos-duration="2000">
+            </div><!-- col-lg-5 -->    
+        </div><!-- row -->
+    </div>
+</section>

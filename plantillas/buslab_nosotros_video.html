@@ -1,0 +1,76 @@
+<style>
+    #row-video-texto .yt-video{
+        width: 100%;
+        height: 400px;
+    }
+    #row-video-texto ul{
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+    #row-video-texto ul li img{
+        width: 20px;
+    }
+    @media(max-width: 767px){
+        #row-video-texto .titles1{
+            font-size: 24px;
+            line-height: 28.8px;
+        }
+        #row-video-texto .btn{
+            width: 100%;
+        }
+        #row-video-texto ul{
+            flex-direction: column;
+        }
+    }
+    @media(max-width: 767px) and (orientation: portrait){
+        #row-video-texto ul{
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+</style>
+
+
+<section class="container-fluid">
+    <div class="container-lg">
+        <div class="row mt-5" id="row-video-texto">
+            <div class="col-lg-5">
+                <!-- <img src="${imagen.getData()}" class="img-fluid w-100" alt=""> -->
+				<iframe src="https://www.youtube.com/embed/lHEi4FZluhA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="yt-video"></iframe>
+            </div><!-- col-lg-5 -->
+            
+            <div class="col-lg-7 py-4 px-3">
+                <p class="subtitles fred mb-0" data-aos="fade-up" data-aos-duration="1400">
+                    ${subtitulo.getData()}
+                </p>
+                <h2 class="titles1 fblack" data-aos="fade-down" data-aos-duration="1650">
+                    ${titulo.getData()}
+                </h2>
+                <p class="mt-4 ptxt1 fblack" data-aos="zoom-in" data-aos-duration="1400">
+                    ${descripcion.getData()}
+                </p>
+                
+                <ul class="pl-3 mt-4">
+                    <#assign counter = 1000>
+                    <#if caracteristicas.getSiblings()?has_content>
+                        <#list caracteristicas.getSiblings() as cur_caracteristicas>
+                            <#if (cur_caracteristicas.getData())??>
+                                <li class="fpurple mr-3 mr-md-4 mb-3 mb-md-0" data-aos="zoom-in" data-aos-duration="${counter}">
+                                    <img src="/documents/d/buslab/checkcircle2" alt="">
+                                    ${cur_caracteristicas.getData()}
+                                </li>
+                            </#if>
+                            <#assign counter = counter + 350>
+                        </#list>
+                    </#if>
+                </ul>
+                
+                <a href="${Fieldset87303396.linkbtn.getData()}" target="_${Fieldset87303396.Radio90592819.getData()}" class="btn redbtn px-4 mt-4" data-aos="zoom-in" data-aos-duration="1400">
+                    ${Fieldset87303396.txtbtn.getData()}
+                </a>
+            </div><!-- col-lg-7 -->
+        </div>
+    </div>
+</section>
